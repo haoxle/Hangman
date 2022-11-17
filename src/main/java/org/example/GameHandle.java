@@ -1,20 +1,27 @@
 package org.example;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-public class GameHandle extends Main{
 
-    public static void gameHandle() {
+import static org.example.WordGenerator.getRandomWord;
+
+public class GameHandle extends Main{
+    static HandleLives handleLives = new HandleLives(8);
+    public static String newWord = getRandomWord().toLowerCase();
+    public static String[] empty = new String[newWord.length()];
+    public static String[] wordArray = newWord.toLowerCase().split("");
+    public static ArrayList<String> usedLetters = new ArrayList<>();
+    public static final String REGEX = "[a-zA-Z]";
+
+    public static void handleGuess() {
         Arrays.fill(empty, "_");
         System.out.println(newWord);
-        System.out.println(Arrays.toString(wordArray));
         System.out.println(Arrays.toString(empty));
-        while (lives > 0) {
+        while (handleLives.getLives() > 0 && !winningCondition()) {
             Scanner play = new Scanner(System.in);
             String guess = play.nextLine();
-            if (Arrays.toString(empty).equals(Arrays.toString(wordArray))) {
-                System.out.println("welldone!");
-            }
             if (!guess.matches(REGEX)) {
+                guess = " ";
                 System.out.println("not a valid character  (◕︵◕)  ");
             } else if (usedLetters.contains(guess)) {
                 System.out.println("letter entered already  ✌.ʕʘ‿ʘʔ.✌");
@@ -23,8 +30,8 @@ public class GameHandle extends Main{
                 usedLetters.add(guess);
             } else {
                 System.out.println("Not part of the word");
-                lives--;
-                System.out.println(lives + " lives left （ミ￣ー￣ミ)");
+                handleLives.reduceLives();
+                System.out.println(handleLives.getLives() + " lives left （ミ￣ー￣ミ)");
                 usedLetters.add(guess);
             }
             for (int i = 0; i < newWord.length(); i++) {
@@ -34,7 +41,13 @@ public class GameHandle extends Main{
             }
             System.out.println(Arrays.toString(empty));
         }
+        System.out.println("You win!");
     }
+
+    private static boolean winningCondition() {
+        return Arrays.toString(empty).equals(Arrays.toString(wordArray));
+    }
+
 }
 
 // stops the game when the word matches
