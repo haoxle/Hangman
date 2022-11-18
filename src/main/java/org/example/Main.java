@@ -6,7 +6,6 @@ import static org.example.Instructions.message;
 
 public class Main {
     public static void main(String[] args) {
-        message();
         handleGuess();
     }
 }

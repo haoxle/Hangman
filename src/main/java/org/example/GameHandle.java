@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import static org.example.HangMan.getHangman;
+import static org.example.Instructions.message;
 import static org.example.WordGenerator.getRandomWord;
 import static org.example.WordGenerator.words;
 
@@ -18,10 +19,7 @@ public class GameHandle {
 
 
     public static void handleGuess() {
-        Arrays.fill(empty, "_");
-        System.out.println(newWord);
-        System.out.println(Arrays.toString(empty));
-
+        message();
         while (handleLives.getLives() != 0 && !winningCondition()) {
             Scanner play = new Scanner(System.in);
             String guess = play.nextLine();

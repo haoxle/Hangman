@@ -1,10 +1,8 @@
 package org.example;
 
 import java.util.ArrayList;
-//import java.util.Random;
 
 public class WordGenerator {
-//    public static Random random = new Random();
     public static ArrayList<String> words = new ArrayList<>();
 
     static {
@@ -21,8 +19,4 @@ public class WordGenerator {
     public static String getRandomWord() {
         return words.get((int) (Math.random() * (words.size())));
     }
-
-//    public static void main(String[] args) {
-//        System.out.println(getRandomWord());
-//    }
 }
