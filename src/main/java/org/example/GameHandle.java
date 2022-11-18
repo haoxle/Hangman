@@ -18,16 +18,14 @@ public class GameHandle {
     public static final String REGEX = "[a-zA-Z]";
 
 
-    public static void handleGuess() {
+    public static void playGame() {
         message(empty);
         Scanner play = new Scanner(System.in);
-
             while (handleLives.getLives() != 0 && !winningCondition()) {
-
                 String guess = play.nextLine();
                 if (!guess.matches(REGEX)) {
                     guess = " ";
-                    System.out.println("Please enter letters only!  (◕︵◕)  ");
+                    System.out.println("Please enter a letter  (◕︵◕)  ");
                 } else if (usedLetters.contains(guess)) {
                     System.out.println("letter entered already  ✌.ʕʘ‿ʘʔ.✌");
                 } else if (newWord.contains(guess.toLowerCase())) {
@@ -52,7 +50,6 @@ public class GameHandle {
             System.out.println("");
             System.out.println("Your word was: " + newWord);
         }
-
 
 
     private static boolean winningCondition() {
