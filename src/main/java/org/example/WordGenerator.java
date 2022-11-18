@@ -1,10 +1,10 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Random;
+//import java.util.Random;
 
 public class WordGenerator {
-    public static Random random = new Random();
+//    public static Random random = new Random();
     public static ArrayList<String> words = new ArrayList<>();
 
     static {
@@ -22,7 +22,7 @@ public class WordGenerator {
         return words.get((int) (Math.random() * (words.size())));
     }
 
-    public static void main(String[] args) {
-        System.out.println(getRandomWord());
-    }
+//    public static void main(String[] args) {
+//        System.out.println(getRandomWord());
+//    }
 }

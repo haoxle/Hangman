@@ -15,7 +15,7 @@ public class HandleLives {
         this.lives = lives;
     }
 
-    public int reduceLives() {
-        return --lives;
+    public void reduceLives() {
+        --lives;
     }
 }

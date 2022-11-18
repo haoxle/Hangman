@@ -1,22 +1,28 @@
 package org.example;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import static org.example.WordGenerator.getRandomWord;
 
-public class GameHandle extends Main{
-    static HandleLives handleLives = new HandleLives(8);
+import static org.example.HangMan.getHangman;
+import static org.example.WordGenerator.getRandomWord;
+import static org.example.WordGenerator.words;
+
+public class GameHandle {
+    static HandleLives handleLives = new HandleLives(7);
     public static String newWord = getRandomWord().toLowerCase();
     public static String[] empty = new String[newWord.length()];
-    public static String[] wordArray = newWord.toLowerCase().split("");
     public static ArrayList<String> usedLetters = new ArrayList<>();
+    public static String[] wordArray = newWord.toLowerCase().split("");
     public static final String REGEX = "[a-zA-Z]";
+
 
     public static void handleGuess() {
         Arrays.fill(empty, "_");
         System.out.println(newWord);
         System.out.println(Arrays.toString(empty));
-        while (handleLives.getLives() > 0 && !winningCondition()) {
+
+        while (handleLives.getLives() != 0 && !winningCondition()) {
             Scanner play = new Scanner(System.in);
             String guess = play.nextLine();
             if (!guess.matches(REGEX)) {
@@ -24,12 +30,12 @@ public class GameHandle extends Main{
                 System.out.println("not a valid character  (◕︵◕)  ");
             } else if (usedLetters.contains(guess)) {
                 System.out.println("letter entered already  ✌.ʕʘ‿ʘʔ.✌");
-            } else if(newWord.contains(guess.toLowerCase())) {
-                System.out.println("the letter is there");
+            } else if (newWord.contains(guess.toLowerCase())) {
                 usedLetters.add(guess);
             } else {
-                System.out.println("Not part of the word");
                 handleLives.reduceLives();
+                getHangman();
+                System.out.println("");
                 System.out.println(handleLives.getLives() + " lives left （ミ￣ー￣ミ)");
                 usedLetters.add(guess);
             }
@@ -39,8 +45,11 @@ public class GameHandle extends Main{
                 }
             }
             System.out.println(Arrays.toString(empty));
+        } if(winningCondition()) {
+            System.out.println("Well done!  ヽ(ｏ`皿′ｏ)ﾉ ");
         }
-        System.out.println("You win!");
+        System.out.println("");
+        System.out.println("Your word was: " + newWord);
     }
 
     private static boolean winningCondition() {
