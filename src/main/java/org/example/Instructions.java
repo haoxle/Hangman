@@ -2,8 +2,8 @@ package org.example;
 
 import java.util.Arrays;
 
-public class Instructions extends GameHandle{
-    public static void message() {
+public class Instructions {
+    public static void message(String[] empty) {
         System.out.println("");
         System.out.println("  (づ｡◕‿‿◕｡)づ   Welcome to Hangman   (●´ω｀●)");
         System.out.println("");

@@ -1,15 +1,15 @@
 package org.example;
 
-public class HangMan extends GameHandle {
+public class HangMan{
 
-    public static void getHangman() {
+    public static void getHangman(int lives) {
 
-        if (handleLives.getLives() == 6) {
+        if (lives == 6) {
             System.out.println("");
             System.out.println("__|____");
             System.out.println("");
         }
-        if (handleLives.getLives() == 5) {
+        if (lives == 5) {
             System.out.println("");
             System.out.println("  ____________");
             System.out.println("  |");
@@ -21,7 +21,7 @@ public class HangMan extends GameHandle {
             System.out.println("__|____");
             System.out.println("");
         }
-        if (handleLives.getLives() == 4) {
+        if (lives == 4) {
             System.out.println("");
             System.out.println("  ____________");
             System.out.println("  |          |");
@@ -33,7 +33,7 @@ public class HangMan extends GameHandle {
             System.out.println("__|____");
             System.out.println("");
         }
-        if (handleLives.getLives() == 3) {
+        if (lives == 3) {
             System.out.println("");
             System.out.println("  ____________");
             System.out.println("  |          |");
@@ -45,7 +45,7 @@ public class HangMan extends GameHandle {
             System.out.println("__|____");
             System.out.println("");
         }
-        if (handleLives.getLives() == 2) {
+        if (lives == 2) {
             System.out.println("");
             System.out.println("  ____________");
             System.out.println("  |          |");
@@ -57,7 +57,7 @@ public class HangMan extends GameHandle {
             System.out.println("__|____");
             System.out.println("");
         }
-        if (handleLives.getLives() == 1) {
+        if (lives == 1) {
             System.out.println("");
             System.out.println("  ____________");
             System.out.println("  |          |");
@@ -69,7 +69,7 @@ public class HangMan extends GameHandle {
             System.out.println("__|____");
             System.out.println("");
         }
-        if (handleLives.getLives() == 0) {
+        if (lives == 0) {
             System.out.println("");
             System.out.println("  ____________");
             System.out.println("  |          |");
