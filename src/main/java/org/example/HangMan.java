@@ -1,6 +1,6 @@
 package org.example;
 
-public class HangMan{
+public class HangMan {
 
     public static void getHangman(int lives) {
 
